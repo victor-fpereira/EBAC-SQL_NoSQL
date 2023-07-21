@@ -1,0 +1,17 @@
+// Faça uma busca de quantos livros não estão com o status publicado e pageCount menor que 300
+db.biblioteca.find({ status: { $ne: "PUBLISH" }, pageCount: { $lt: 300 } }, { _id: false, title: true });
+
+
+// Faça uma busca de livros que contém as palavras MongoDB e SQL Server no título
+// Usa regex para ser case insensitive
+db.biblioteca.find({title: {field: { $regex: "MongoDB", $options: "i" }}, title:{field: { $regex: "SQL", $options: "i" }} }, { _id: false, title: true })
+
+// Faça uma busca com expressão regular onde ISBN começa com 18
+db.biblioteca.find({ isbn: {$regex: /^18/}}, { _id: false, title: true })
+
+// Usando expressão regular, busque livros que contém a palavra JAVA ou Mobile na descrição do livro
+// (LongDescription), lembrando que deve trazer todas as palavras independente de começar com maiúsculo ou minúsculo
+db.biblioteca.find({$or:[{longDescription: {$regex: /Java/, $options: "i"}}, {longDescription: {$regex: /Mobile/, $options: "i"}}]})
+
+
+

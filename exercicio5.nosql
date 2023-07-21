@@ -1,0 +1,15 @@
+// Retorna a quantidade de documentos da busca
+
+db.biblioteca.countDocuments({ status: { $ne: "PUBLISH" }, pageCount: { $lt: 300} })
+
+
+// Retorna a quantidade de documentos da busca
+db.biblioteca.countDocuments({title: {field: { $regex: "MongoDB", $options: "i" }}, title:{field: { $regex: "SQL", $options: "i" }} })
+
+
+// Retorna a quantidade de documentos da busca
+db.biblioteca.countDocuments({ isbn: {$regex: /^18/}})
+
+
+// Retorna a quantidade de documentos da busca
+db.biblioteca.countDocuments({$or:[{longDescription: {$regex: /Java/, $options: "i"}},{longDescription: {$regex: /Mobile/, $options: "i"}}]})
